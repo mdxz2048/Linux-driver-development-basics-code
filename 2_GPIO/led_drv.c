@@ -18,13 +18,14 @@
 static int led_open(struct inode *inode, struct file *filp);
 static int led_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos);
 /*REGISTER ADDRESS */
-static volatile uint32_t *SW_MUX_CTL_PAD_SNVS_TAMPER3; // 229_0014h
+static volatile uint32_t *SW_MUX_CTL_PAD_SNVS_TAMPER3; // 2290014h
 static volatile uint32_t *GPIO5_GDIR;				   // 20AC004h
 static volatile uint32_t *GPIO5_DR;					   // 20AC000h
 
 /*1. 确定主设备号；*/
 static int led_major; /* default to dynamic major */
 static struct class *led_class;
+
 /*2. 定义自己的file\_operations结构体；*/
 /*
  * file operations

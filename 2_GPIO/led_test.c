@@ -7,8 +7,8 @@
 #include <string.h>
 
 /*
- * ./ledtest /dev/100ask_led0 on
- * ./ledtest /dev/100ask_led0 off
+ * ./ledtest /dev/mdxz_led0 on
+ * ./ledtest /dev/mdxz_led0 off
  */
 int main(int argc, char **argv)
 {
