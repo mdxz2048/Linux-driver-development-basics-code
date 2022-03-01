@@ -27,8 +27,9 @@ struct led_operations *p_led_opr;
 /****************************The end of declare variable***************************/
 
 /*********************************DECLARE FUNCTION*********************************/
-static int led_open(struct inode *inode, struct file *filp);
-static int led_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos);
+static int led_drv_open(struct inode *inode, struct file *filp);
+static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos);
+static int led_drv_close (struct inode *node, struct file *file);
 /****************************The end of declare function***************************/
 
 /*1. 确定主设备号；*/
@@ -41,12 +42,13 @@ static struct class *led_class;
  */
 static const struct file_operations led_ops = {
     .owner = THIS_MODULE,
-    .open = led_open,
-    .write = led_write,
+    .open = led_drv_open
+    .write = led_drv_write;
+    .release = led_drv_close;
 };
 
 /*3.  实现对应的open/read/write等函数，填入file\_operations结构体；*/
-static int led_open(struct inode *inode, struct file *filp)
+static int led_drv_open(struct inode *inode, struct file *filp)
 {
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
     p_led_opr->init();
@@ -54,7 +56,7 @@ static int led_open(struct inode *inode, struct file *filp)
     return 0;
 }
 
-static int led_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos)
+static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos)
 {
     char value = 0;
     int ret = -1;
@@ -67,6 +69,12 @@ static int led_write(struct file *filp, const char __user *buf, size_t count, lo
     p_led_opr->ctl(minor, value);
 
     return 0;
+}
+
+static int led_drv_close (struct inode *node, struct file *file)
+{
+	printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
+	return 0;
 }
 
 /*4. 入口函数：安装驱动时，就会去调用入口函数；*/
