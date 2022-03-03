@@ -74,10 +74,8 @@ static int led_drv_write(struct file *filp, const char __user *buf, size_t count
 static int led_drv_close(struct inode *node, struct file *file)
 {
     printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
-    struct inode *inode = file_inode(file);
     /*提取次设备号*/
-    int minor = iminor(inode);
-    p_led_opr->exit(minor);
+
     return 0;
 }
 
@@ -110,9 +108,9 @@ module_init(led_init);
 /*5.  出口函数：卸载驱动时，就会去调用出口函数；*/
 static void __exit led_exit(void)
 {
-    iounmap(SW_MUX_CTL_PAD_SNVS_TAMPER3);
-    iounmap(GPIO5_GDIR);
-    iounmap(GPIO5_DR);
+    struct inode *inode = file_inode(file);
+    int minor = iminor(inode);
+    p_led_opr->exit(minor);
     unregister_chrdev(led_major, DEVNAME);
     class_destroy(led_class);
     device_destroy(led_class, MKDEV(led_major, 0));

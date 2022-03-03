@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Mar  3 14:42:20 2022
+# Make data base, printed on Thu Mar  3 17:25:35 2022
 
 # Variables
 
@@ -65,6 +65,8 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
@@ -73,13 +75,15 @@ MANAGERPID = 1794
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-01f32d92-50ac-4318-9a09-e434aa54ccfe.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-10d2d59e-8d5a-43ef-999f-24317f8a51e0.sock
 # environment
 VSCODE_CWD = /home/caeri
+# environment
+GOPROXY = https://proxy.golang.org,direct
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go:/home/caeri/lzp/program_GO
+PATH = /usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go:/home/caeri/lzp/program_GO
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
@@ -103,7 +107,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2505
+GIO_LAUNCHED_DESKTOP_FILE_PID = 54696
 # automatic
 %F = $(notdir $%)
 # environment
@@ -123,7 +127,7 @@ ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+GOMODCACHE = /home/caeri/lzp/program_GO/pkg/mod
 # environment
 HOME = /home/caeri
 # environment
@@ -219,9 +223,9 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2505
+VSCODE_PID = 54696
 # variable set hash-table stats:
-# Load=104/1024=10%, Rehash=0, Collisions=13/126=10%
+# Load=106/1024=10%, Rehash=0, Collisions=14/128=11%
 
 # Pattern-specific Variable Values
 
@@ -279,15 +283,15 @@ GNUmakefile:
 
 # No 'vpath' search paths.
 
+ 
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 15 / storage = 129 B / avg = 8 B
- 
 # current buf: size = 8162 B / used = 129 B / count = 15 / avg = 8 B
 
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Thu Mar  3 14:42:20 2022
+# Finished Make data base on Thu Mar  3 17:25:35 2022
 
  
