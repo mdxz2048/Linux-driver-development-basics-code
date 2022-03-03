@@ -23,35 +23,35 @@
 /*********************************DECLARE VARIABLE*********************************/
 
 struct led_operations *p_led_opr;
-
-/****************************The end of declare variable***************************/
-
-/*********************************DECLARE FUNCTION*********************************/
-static int led_drv_open(struct inode *inode, struct file *filp);
-static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos);
-static int led_drv_close (struct inode *node, struct file *file);
-/****************************The end of declare function***************************/
-
 /*1. 确定主设备号；*/
 static int led_major; /* default to dynamic major */
 static struct class *led_class;
-
 /*2. 定义自己的file\_operations结构体；*/
 /*
  * file operations
  */
 static const struct file_operations led_ops = {
     .owner = THIS_MODULE,
-    .open = led_drv_open
-    .write = led_drv_write;
-    .release = led_drv_close;
+    .open = led_drv_open,
+    .write = led_drv_write,
+    .release = led_drv_close,
 };
+
+/****************************The end of declare variable***************************/
+
+/*********************************DECLARE FUNCTION*********************************/
+static int led_drv_open(struct inode *inode, struct file *filp);
+static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos);
+static int led_drv_close(struct inode *node, struct file *file);
+/****************************The end of declare function***************************/
 
 /*3.  实现对应的open/read/write等函数，填入file\_operations结构体；*/
 static int led_drv_open(struct inode *inode, struct file *filp)
 {
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
-    p_led_opr->init();
+
+    int minor = iminor(node);
+    p_led_opr->init(minor);
 
     return 0;
 }
@@ -60,21 +60,25 @@ static int led_drv_write(struct file *filp, const char __user *buf, size_t count
 {
     char value = 0;
     int ret = -1;
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+
+    ret = copy_from_user(&value, buf, 1);
     struct inode *inode = file_inode(file);
     /*提取次设备号*/
     int minor = iminor(inode);
-
-    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
-    ret = copy_from_user(&value, buf, 1);
     p_led_opr->ctl(minor, value);
 
     return 0;
 }
 
-static int led_drv_close (struct inode *node, struct file *file)
+static int led_drv_close(struct inode *node, struct file *file)
 {
-	printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
-	return 0;
+    printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
+    struct inode *inode = file_inode(file);
+    /*提取次设备号*/
+    int minor = iminor(inode);
+    p_led_opr->exit(minor);
+    return 0;
 }
 
 /*4. 入口函数：安装驱动时，就会去调用入口函数；*/
@@ -92,8 +96,7 @@ static int __init led_init(void)
     led_major = register_chrdev(0, DEVNAME, &led_ops);
     if (led_major < 0)
     {
-        printk(DEVNAME
-               ": could not get major number\n");
+        printk(DEVNAME ": could not get major number\n");
         class_destroy(led_class);
         return led_major;
     }
@@ -102,6 +105,8 @@ static int __init led_init(void)
 
     return 0;
 }
+module_init(led_init);
+
 /*5.  出口函数：卸载驱动时，就会去调用出口函数；*/
 static void __exit led_exit(void)
 {
@@ -112,7 +117,7 @@ static void __exit led_exit(void)
     class_destroy(led_class);
     device_destroy(led_class, MKDEV(led_major, 0));
 }
-/*6. 其他完善，提供设备信息，自动创建设备节点。*/
-module_init(led_init);
 module_exit(led_exit);
+
+/*6. 其他完善，提供设备信息，自动创建设备节点。*/
 MODULE_LICENSE("GPL");
