@@ -1,6 +1,6 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/caeri/lzp/GIT/drive/Linux-driver-development-basics-code'
-make: Leaving directory '/home/caeri/lzp/GIT/drive/Linux-driver-development-basics-code'
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code'
+make: Leaving directory '/home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code'
  
 make: *** No targets specified and no makefile found.  Stop.
  
