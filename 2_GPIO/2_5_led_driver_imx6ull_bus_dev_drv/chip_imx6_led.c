@@ -14,8 +14,12 @@
 #include <linux/tty.h>
 #include <linux/kmod.h>
 #include <linux/gfp.h>
-#include "led_operation.h"
+#include <linux/platform_device.h>
 #include <asm/io.h>
+
+#include "led_operation.h"
+#include "led_resource.h"
+#include "led_drv.h"
 
 led_operations_t led_opr_100ask;
 static int g_ledpins[100];
@@ -44,13 +48,10 @@ static int chip_imx6_led_init(int which)
     case 3:
         printk("init pin of group 3 ...\n");
         break;
-    default:
-        break;
-    }
 
-    return 0;
+        return 0;
+    }
 }
-module_init(board_imx6ull_led_init);
 
 static int chip_imx6_led_exit(int which)
 {
@@ -58,7 +59,6 @@ static int chip_imx6_led_exit(int which)
 
     return 0;
 }
-module_exit(board_imx6ull_led_exit);
 
 /**
  * @brief               控制LED
@@ -94,9 +94,65 @@ static int chip_imx6_led_ctl(int which, int status)
 
 led_operations_t *get_board_led_opr(void)
 {
-    led_opr_100ask.init = led_opr_init;
-    led_opr_100ask.ctl = led_opr_ctl;
-    led_opr_100ask.exit = led_opr_exit;
+    led_opr_100ask.init = chip_imx6_led_init;
+    led_opr_100ask.ctl = chip_imx6_led_ctl;
+    led_opr_100ask.exit = chip_imx6_led_exit;
 
     return &led_opr_100ask;
 }
+
+static int chip_imx6_gpio_probe(struct platform_device *pdev)
+{
+    for (g_ledcnt = 0; g_ledcnt < pdev->num_resources; g_ledcnt++)
+    {
+        g_ledpins[g_ledcnt] = pdev->resource[g_ledcnt].start;
+    }
+
+    return 0;
+}
+
+static int chip_imx_gpio_remove(struct platform_device *pdev)
+{
+    struct resource *res;
+    int i = 0;
+
+    while (1)
+    {
+        res = platform_get_resource(pdev, IORESOURCE_IRQ, i);
+        if (!res)
+            break;
+
+        led_destroy_device(i);
+        i++;
+        g_ledcnt--;
+    }
+    return 0;
+}
+
+static struct platform_driver chip_demo_gpio_driver = {
+    .probe = chip_imx6_gpio_probe,
+    .remove = chip_imx_gpio_remove,
+                  .driver = {
+        .name = "mdxz_led",
+    },
+};
+
+
+static int __init chip_demo_gpio_drv_init(void)
+{
+    int err;
+
+    err = platform_driver_register(&chip_demo_gpio_driver);
+    register_led_operations(&led_opr_100ask);
+
+    return 0;
+}
+
+static void __exit chip_demo_gpio_drv_exit(void)
+{
+    platform_driver_unregister(&chip_demo_gpio_driver);
+}
+
+module_init(chip_demo_gpio_drv_init);
+module_exit(chip_demo_gpio_drv_exit);
+MODULE_LICENSE("GPL");

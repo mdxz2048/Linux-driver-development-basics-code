@@ -15,11 +15,17 @@
 #include <linux/gfp.h>
 #include "led_operation.h"
 #include <asm/io.h>
+#include "led_resource.h"
 
 static struct platform_device pdev;
 static struct resource *led_resources[] = {
     {
         .star = GROUP_PIN(3, 1),
+        .name = "mdxz_led",
+        .flags = IORESOURCE_IRQ,
+    },
+    {
+        .star = GROUP_PIN(4, 1),
         .name = "mdxz_led",
         .flags = IORESOURCE_IRQ,
     },
