@@ -15,57 +15,58 @@
 #include <linux/gfp.h>
 #include "led_operation.h"
 #include <asm/io.h>
+#include <linux/platform_device.h>
 #include "led_resource.h"
 
-static struct platform_device pdev;
-static struct resource *led_resources[] = {
+static struct resource led_resources[] = {
     {
-        .star = GROUP_PIN(3, 1),
+        .start = GROUP_PIN(3, 1),
         .name = "mdxz_led",
         .flags = IORESOURCE_IRQ,
     },
     {
-        .star = GROUP_PIN(4, 1),
+        .start = GROUP_PIN(4, 1),
         .name = "mdxz_led",
         .flags = IORESOURCE_IRQ,
     },
 
 };
-static int board_imx6ull_led_init();
-static int board_imx6ull_led_release();
-static int board_imx6ull_led_exit();
+
+static int board_imx6ull_led_init(void);
+static void board_imx6ull_led_release(struct device *dev);
+static int board_imx6ull_led_exit(void);
 MODULE_LICENSE("GPL");
 
-static int board_imx6ull_led_init()
-{
-    printk("%s %s line %d, %s\n", __FILE__, __FUNCTION__, __LINE__, status ? "on" : "off");
-
-    pdev.name = "mdxz_led";
-    pdev.num_resources = ARRAY_SIZE(led_resources);
-    pdev.resource = led_resources;
-    pdev.dev = {
+static struct platform_device pdev = {
+    .name = "mdxz_led",
+    .num_resources = ARRAY_SIZE(led_resources),
+    .resource = led_resources,
+    .dev = {
         .release = board_imx6ull_led_release,
-    };
+    },
+};
+static int board_imx6ull_led_init(void)
+{
+    int ret;
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
 
-    int ret = platform_device_register(&board_A_led_dev);
+    ret = platform_device_register(&pdev);
 
     return 0;
 }
 
 module_init(board_imx6ull_led_init);
 
-static int board_imx6ull_led_exit()
+static int board_imx6ull_led_exit(void)
 {
-    printk("%s %s line %d, %s\n", __FILE__, __FUNCTION__, __LINE__, status ? "on" : "off");
-
-    int ret = platform_device_unregister(&board_A_led_dev);
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+    int ret = platform_device_unregister(&pdev);
 
     return 0;
 }
 
 module_exit(board_imx6ull_led_exit);
 
-static int board_imx6ull_led_release()
+static void board_imx6ull_led_release(struct device *dev)
 {
-    return 0;
 }
