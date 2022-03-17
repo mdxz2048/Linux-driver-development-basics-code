@@ -23,10 +23,10 @@
 
 /*********************************DECLARE VARIABLE*********************************/
 
-struct led_operations_t *p_led_opr;
 /*1. 确定主设备号；*/
 static int led_major; /* default to dynamic major */
 static struct class *led_class;
+struct led_operations_t *p_led_opr;
 
 /****************************The end of declare variable***************************/
 
@@ -35,16 +35,13 @@ static int led_drv_open(struct inode *inode, struct file *filp);
 static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos);
 static int led_drv_close(struct inode *node, struct file *file);
 /****************************The end of declare function***************************/
-int led_class_create_device(int minor)
+void led_class_create_device(int minor)
 {
     device_create(led_class, NULL, MKDEV(led_major, 0), NULL, "mdxz_led%d", minor); ///* /dev/mdxz_led0,1,... */
-
-    return 0;
 }
-int led_destroy_device(int minor)
+void led_destroy_device(int minor)
 {
     device_destroy(led_class, MKDEV(led_major, minor));
-    return 0;
 }
 
 int register_led_operations(struct led_operations_t *led_opr)
@@ -67,7 +64,6 @@ static const struct file_operations led_ops = {
     .release = led_drv_close,
 };
 
-
 /*3.  实现对应的open/read/write等函数，填入file\_operations结构体；*/
 static int led_drv_open(struct inode *inode, struct file *filp)
 {
@@ -80,19 +76,21 @@ static int led_drv_open(struct inode *inode, struct file *filp)
     return 0;
 }
 
+/* write(fd, &val, 1); */
 static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos)
 {
     char value = 0;
     int ret = -1;
-    // printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
 
     struct inode *inode = file_inode(filp);
     int minor = iminor(inode);
+    /* 拷贝用户层数据 */
     ret = copy_from_user(&value, buf, 1);
-
+    /* 根据次设备号和status控制LED */
     p_led_opr->ctl(minor, value);
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
 
-    return 0;
+    return 1;
 }
 
 static int led_drv_close(struct inode *node, struct file *file)
@@ -108,20 +106,23 @@ static int __init led_drv_init(void)
 {
     // int i = 0;
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
-    /*class_create*/
-    led_class = class_create(THIS_MODULE, "mdxz_led");
-    if (IS_ERR(led_class))
-        return PTR_ERR(led_class);
-    /*get p_led_opr*/
-    p_led_opr = get_board_led_opr();
 
     led_major = register_chrdev(0, DEVNAME, &led_ops);
     if (led_major < 0)
     {
         printk(DEVNAME ": could not get major number\n");
-        class_destroy(led_class);
         return led_major;
     }
+    /*class_create*/
+    led_class = class_create(THIS_MODULE, "mdxz_led");
+    if (IS_ERR(led_class))
+    {
+        class_destroy(led_class);
+        return PTR_ERR(led_class);
+    }
+
+    /*get p_led_opr*/
+    // p_led_opr = get_board_led_opr();
 
     return 0;
 }
