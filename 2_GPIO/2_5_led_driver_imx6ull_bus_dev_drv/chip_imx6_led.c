@@ -21,7 +21,6 @@
 #include "led_resource.h"
 #include "led_drv.h"
 
-led_operations_t led_opr_100ask;
 static int g_ledpins[100];
 static int g_ledcnt = 0;
 
@@ -48,9 +47,8 @@ static int chip_imx6_led_init(int which)
     case 3:
         printk("init pin of group 3 ...\n");
         break;
-
-        return 0;
     }
+    return 0;
 }
 
 static int chip_imx6_led_exit(int which)
@@ -92,15 +90,16 @@ static int chip_imx6_led_ctl(int which, int status)
     return 0;
 }
 
-led_operations_t *get_board_led_opr(void)
+static struct led_operations_t led_opr_100ask =
+    {
+        .init = chip_imx6_led_init,
+        .ctl = chip_imx6_led_ctl,
+        .exit = chip_imx6_led_exit,
+};
+struct led_operations_t *get_board_led_opr(void)
 {
-    led_opr_100ask.init = chip_imx6_led_init;
-    led_opr_100ask.ctl = chip_imx6_led_ctl;
-    led_opr_100ask.exit = chip_imx6_led_exit;
-
     return &led_opr_100ask;
 }
-
 static int chip_imx6_gpio_probe(struct platform_device *pdev)
 {
     for (g_ledcnt = 0; g_ledcnt < pdev->num_resources; g_ledcnt++)
@@ -132,11 +131,10 @@ static int chip_imx_gpio_remove(struct platform_device *pdev)
 static struct platform_driver chip_demo_gpio_driver = {
     .probe = chip_imx6_gpio_probe,
     .remove = chip_imx_gpio_remove,
-                  .driver = {
+    .driver = {
         .name = "mdxz_led",
     },
 };
-
 
 static int __init chip_demo_gpio_drv_init(void)
 {

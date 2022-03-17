@@ -18,4 +18,4 @@ clean:
 	rm -rf modules.order
 	rm -f ledtest
 
-obj-m	+= led_drv.o
+obj-m	+= led_drv.o chip_imx6_led.o board_100ask_led.o

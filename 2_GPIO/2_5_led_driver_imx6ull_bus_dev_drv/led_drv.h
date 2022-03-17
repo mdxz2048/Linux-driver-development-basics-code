@@ -3,7 +3,7 @@
 
 int led_class_create_device(int minor);
 int led_destroy_device(int minor);
-int register_led_operations(led_operations_t *led_opr);
+int register_led_operations(struct led_operations_t *led_opr);
 
 
 

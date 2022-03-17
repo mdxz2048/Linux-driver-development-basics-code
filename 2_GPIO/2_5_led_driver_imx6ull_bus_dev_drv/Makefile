@@ -7,9 +7,9 @@
 # 注意: 不同的开发板不同的编译器上述3个环境变量不一定相同,
 #       请参考各开发板的高级用户使用手册
 
-#KERN_DIR = /home/caeri/lzp/GIT/drive/Linux-4.9.88
+KERN_DIR = /home/caeri/lzp/GIT/drive/100ask_imx6ull-sdk/Linux-4.9.88
 
-KERN_DIR = /home/mdxz/lzp/Embeded/100ask_imx6ull-sdk/Linux-4.9.88
+#KERN_DIR = /home/mdxz/lzp/Embeded/100ask_imx6ull-sdk/Linux-4.9.88
 
 all:
 	make -C $(KERN_DIR) M=`pwd` modules 

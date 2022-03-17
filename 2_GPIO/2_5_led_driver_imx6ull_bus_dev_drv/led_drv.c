@@ -23,7 +23,7 @@
 
 /*********************************DECLARE VARIABLE*********************************/
 
-led_operations_t *p_led_opr;
+struct led_operations_t *p_led_opr;
 /*1. 确定主设备号；*/
 static int led_major; /* default to dynamic major */
 static struct class *led_class;
@@ -47,7 +47,7 @@ int led_destroy_device(int minor)
     return 0;
 }
 
-int register_led_operations(led_operations_t *led_opr)
+int register_led_operations(struct led_operations_t *led_opr)
 {
     p_led_opr = led_opr;
     return 0;
@@ -66,6 +66,7 @@ static const struct file_operations led_ops = {
     .write = led_drv_write,
     .release = led_drv_close,
 };
+
 
 /*3.  实现对应的open/read/write等函数，填入file\_operations结构体；*/
 static int led_drv_open(struct inode *inode, struct file *filp)

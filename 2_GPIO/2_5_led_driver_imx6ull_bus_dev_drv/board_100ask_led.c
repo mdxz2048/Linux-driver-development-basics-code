@@ -34,7 +34,7 @@ static struct resource led_resources[] = {
 
 static int board_imx6ull_led_init(void);
 static void board_imx6ull_led_release(struct device *dev);
-static int board_imx6ull_led_exit(void);
+static void board_imx6ull_led_exit(void);
 MODULE_LICENSE("GPL");
 
 static struct platform_device pdev = {
@@ -57,12 +57,11 @@ static int board_imx6ull_led_init(void)
 
 module_init(board_imx6ull_led_init);
 
-static int board_imx6ull_led_exit(void)
+static void board_imx6ull_led_exit(void)
 {
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
-    int ret = platform_device_unregister(&pdev);
+    platform_device_unregister(&pdev);
 
-    return 0;
 }
 
 module_exit(board_imx6ull_led_exit);
