@@ -9,5 +9,10 @@
 #define GROUP_PIN(g,p) ((g<<16) | (p))
 
 
+struct led_resource {
+	int pin;
+};
+struct led_resource  *get_led_resouce(void);
+
 #endif
 
