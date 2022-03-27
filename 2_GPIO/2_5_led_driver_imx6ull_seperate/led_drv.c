@@ -58,7 +58,8 @@ static int led_drv_read(struct file *filp, char __user *buf, size_t count, loff_
 }
 
 /* write(fd, &val, 1); */
-static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos)
+static int 
+(struct file *filp, const char __user *buf, size_t count, loff_t *ppos)
 {
     char value = 0;
     int ret = -1;
@@ -78,8 +79,8 @@ static int led_drv_open(struct inode *inode, struct file *filp)
 {
     int minor = -1;
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
-
     minor = iminor(inode);
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
     p_led_opr->init(minor);
 
     return 0;
@@ -119,6 +120,7 @@ static int __init led_drv_init(void)
     for (i = 0; i < LED_NUM; i++)
         device_create(led_class, NULL, MKDEV(led_major, i), NULL, "mdxz_led%d", i); /* /dev/mdxz_led0,1,... */
 
+    p_led_opr = get_board_led_opr();
     return 0;
 }
 module_init(led_drv_init);

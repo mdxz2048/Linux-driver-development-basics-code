@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Mar 17 18:41:50 2022
+# Make data base, printed on Sun Mar 27 10:10:33 2022
 
 # Variables
 
@@ -24,6 +24,8 @@ DESKTOP_SESSION = ubuntu
 .SHELLFLAGS := -c
 # environment
 XDG_SESSION_CLASS = user
+# environment
+SNAP_COMMON = /var/snap/code/common
 # environment
 XDG_SESSION_TYPE = x11
 # environment
@@ -41,27 +43,29 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=fcitx
 # makefile
-CURDIR := /home/caeri/lzp/GIT/drive/Linux-driver-development-basics-code
+CURDIR := /home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code
 # makefile
 SHELL = /bin/sh
 # environment
+SNAP_DATA = /var/snap/code/91
+# environment
 VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /usr/share/code/code
-# environment
-JOURNAL_STREAM = 8:67865
+JOURNAL_STREAM = 8:69038
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# environment
+SNAP_INSTANCE_NAME = code
+# environment
+SNAP_ARCH = amd64
 # makefile
 MAKEFILE_LIST := 
 # automatic
 @F = $(notdir $@)
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-USERNAME = caeri
-# environment
-MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+USERNAME = mdxz
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
@@ -69,69 +73,115 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1805
+_ = /snap/code/91/usr/share/code/code
+# environment
+MANAGERPID = 1566
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-1c794b11-d528-42bc-8be3-16cb4eabfbd5.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f85fc212-1e75-46a1-81c1-18f0d5aee437.sock
 # environment
-VSCODE_CWD = /home/caeri
+VSCODE_CWD = /home/mdxz
+# environment
+GSETTINGS_SCHEMA_DIR = /snap/code/91/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go:/home/caeri/lzp/program_GO
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local//go/bin:/home/mdxz/lzp/Embeded/100ask_imx6ull-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/2022,unix/ubuntu:/tmp/.ICE-unix/2022
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1782,unix/ubuntu:/tmp/.ICE-unix/1782
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-GOPATH = /home/caeri/lzp/program_GO
+GDK_PIXBUF_MODULE_FILE = /home/mdxz/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
+SNAP = /snap/code/91
+# environment
+GOPATH = /home/mdxz/Applications/Go
+ 
+# environment
+ 
+SNAP_VERSION = c722ca6c
+ 
+# environment
+ 
 XDG_MENU_PREFIX = gnome-
+ 
 # environment
+ 
 VSCODE_LOG_STACK = false
+ 
 # environment
-VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=ede2e530-3281-4a1c-a17e-92a38a2a71ca&iid=ede2e530-3281-4a1c-a17e-92a38a2a71ca&sid=ede2e530-3281-4a1c-a17e-92a38a2a71ca","uploadToServer":true}
+ 
+DISABLE_WAYLAND = 1
+ 
 # environment
-INVOCATION_ID = 5df64c247cab4809a6af5fd1f3d9034b
+ 
+ELECTRON_RUN_AS_NODE = 1
+ 
+# environment
+ 
+INVOCATION_ID = 895fb4dc5c5c4cf7aeedc91da9b0effd
+ 
+# environment
+GDK_PIXBUF_MODULEDIR = /snap/code/91/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+LS_COLORS = 
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 39821
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2231
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
 # environment
+ 
 GTK_IM_MODULE = fcitx
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/caeri/lzp/GIT/drive/Linux-driver-development-basics-code
+SNAP_INSTANCE_KEY = 
+# environment
+PWD = /home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1979
+SSH_AGENT_PID = 1739
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/caeri
+HOME = /home/mdxz
 # environment
-VSCODE_CODE_CACHE_PATH = /home/caeri/.config/Code/CachedData/3a6960b964327f0e3882ce18fcebd07ed191b316
+VSCODE_CLI = 1
 # environment
-LOGNAME = caeri
+VSCODE_CODE_CACHE_PATH = /home/mdxz/.config/Code/CachedData/c722ca6c7eed3d7987c0d5c3df5c45f6b15e77d1
+# environment
+LOGNAME = mdxz
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+# environment
+SNAP_CONTEXT = RN_xRC4gDrJ7IXsKDyQIMXmO42KM7YkkwpxJayobBgYVEjKxWE-2
+# environment
+ZSH = /home/mdxz/.oh-my-zsh
+# environment
+SNAP_USER_COMMON = /home/mdxz/snap/code/common
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -140,6 +190,8 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 MAKELEVEL := 0
+# environment
+SNAP_REAL_HOME = /home/mdxz
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -147,31 +199,42 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = fcitx
 # environment
+SNAP_USER_DATA = /home/mdxz/snap/code/91
+# environment
 SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # default
 MAKE_VERSION := 4.2.1
 # environment
-USER = caeri
+USER = mdxz
+# environment
+SNAP_REVISION = 91
 # makefile
+ 
 .DEFAULT_GOAL := 
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # environment
-GOROOT = /usr/local/go
+GOROOT = /usr/local//go
+# environment
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/caeri
+OLDPWD = /home/mdxz
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-0fddb2cb-1.62.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-31e28d16-1.65.2-main.sock
+# environment
+BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
+# environment
+ARCH = arm
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -179,8 +242,9 @@ MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-BREAKPAD_DUMP_LOCATION = /home/caeri/.config/Code/exthost Crash Reports
+GOROOT_BOOTSTRAP = /home/mdxz/go1.4/go
 # automatic
+ 
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 GDK_BACKEND = x11
@@ -189,13 +253,18 @@ GDK_BACKEND = x11
 # environment
 QT_ACCESSIBILITY = 1
 # environment
-DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+CROSS_COMPILE = arm-buildroot-linux-gnueabihf-
 # default
 MAKEFILES := 
+# environment
+ 
+SNAP_COOKIE = RN_xRC4gDrJ7IXsKDyQIMXmO42KM7YkkwpxJayobBgYVEjKxWE-2
 # automatic
 <F = $(notdir $<)
 # environment
-ELECTRON_RUN_AS_NODE = 1
+SNAP_NAME = code
+# environment
+PAGER = less
 # environment
 LC_ALL = C
 # environment
@@ -207,6 +276,8 @@ GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # default
 SUFFIXES := 
 # environment
+SNAP_REEXEC = 
+# environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
 WINDOWPATH = 2
@@ -217,11 +288,13 @@ GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
 # environment
+FORCE_UNSAFE_CONFIGURE = 1
+# environment
 LANG = C
 # environment
-VSCODE_PID = 39821
+VSCODE_PID = 2308
 # variable set hash-table stats:
-# Load=104/1024=10%, Rehash=0, Collisions=13/126=10%
+# Load=132/1024=13%, Rehash=0, Collisions=18/154=12%
 
 # Pattern-specific Variable Values
 
@@ -229,7 +302,7 @@ VSCODE_PID = 39821
 
 # Directories
 
-# . (device 2053, inode 3801104): 7 files, no impossibilities.
+# . (device 2053, inode 4066135): 7 files, no impossibilities.
 
 # 7 files, no impossibilities in 1 directories.
 
@@ -286,8 +359,7 @@ GNUmakefile:
 
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
- 
 # Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Thu Mar 17 18:41:50 2022
+# Finished Make data base on Sun Mar 27 10:10:33 2022
 
  
