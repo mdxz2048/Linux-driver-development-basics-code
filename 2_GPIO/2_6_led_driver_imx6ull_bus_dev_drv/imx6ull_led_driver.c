@@ -127,7 +127,6 @@ static int chip_demo_gpio_remove(struct platform_device *pdev)
         res = platform_get_resource(pdev, IORESOURCE_IRQ, i);
         if (!res)
             break;
-        g_ledpins[g_ledcnt] = res->start;
         led_class_destroy_device(i);
         i++;
         g_ledcnt--;
@@ -139,7 +138,9 @@ static struct platform_driver chip_demo_gpio_drv = {
     .probe = chip_demo_gpio_probe,
     .remove = chip_demo_gpio_remove,
     .driver = {
-        .name = "mdxz_led"}};
+        .name = "mdxz_led",
+    },
+};
 
 static int __init chip_demo_gpio_drv_init(void)
 {

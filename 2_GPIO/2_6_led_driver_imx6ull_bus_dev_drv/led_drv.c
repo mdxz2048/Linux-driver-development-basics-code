@@ -17,7 +17,6 @@
 #include "led_operation.h"
 #include "led_drv.h"
 /**************************************DEFINE**************************************/
-#define LED_NUM 2
 #define DEVNAME "mdxz_led"
 
 /*********************************The end of define********************************/
@@ -40,7 +39,7 @@ static int led_drv_close(struct inode *node, struct file *file);
 
 void led_class_create_device(int minor)
 {
-    device_create(led_class, NULL, MKDEV(led_major, minor), NULL, "100ask_led%d", minor); /* /dev/100ask_led0,1,... */
+    device_create(led_class, NULL, MKDEV(led_major, minor), NULL, "mdxz_led%d", minor); /* /dev/100ask_led0,1,... */
 }
 
 void led_class_destroy_device(int minor)

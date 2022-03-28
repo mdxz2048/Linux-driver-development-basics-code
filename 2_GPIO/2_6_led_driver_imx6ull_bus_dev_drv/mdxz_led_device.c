@@ -18,29 +18,28 @@
 #include <linux/platform_device.h>
 #include "led_resource.h"
 
-
 static void led_dev_release(struct device *dev)
 {
+
 }
 static struct resource resources[] = {
     {
-        .start = GROUP_PIN(3,1),
+        .start = GROUP_PIN(3, 1),
         .flags = IORESOURCE_IRQ,
-        .name  = "mdxz_led_pin",
+        .name = "mdxz_led_pin",
     },
 
     {
-        .start = GROUP_PIN(5,3),
+        .start = GROUP_PIN(5, 3),
         .flags = IORESOURCE_IRQ,
         .name = "mdxz_led_pin",
     },
 
 };
-
-
 static struct platform_device board_A_led_dev = {
-    .name = "mdxz_led",
+    .name = "100ask_led",
     .num_resources = ARRAY_SIZE(resources),
+    .resource = resources,
     .dev = {
         .release = led_dev_release,
     },
@@ -49,7 +48,8 @@ static struct platform_device board_A_led_dev = {
 static int __init led_dev_init(void)
 {
     int err;
-
+    printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
+    printk("name = %s\n", board_A_led_dev.name);
     err = platform_device_register(&board_A_led_dev);
     return 0;
 }
