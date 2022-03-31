@@ -37,7 +37,7 @@ static struct resource resources[] = {
 
 };
 static struct platform_device board_A_led_dev = {
-    .name = "100ask_led",
+    .name = "mdxz_led",
     .num_resources = ARRAY_SIZE(resources),
     .resource = resources,
     .dev = {
