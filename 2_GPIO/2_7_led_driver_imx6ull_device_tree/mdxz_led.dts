@@ -1,0 +1,14 @@
+#define GROUP_PIN(g,p) ((g<<16) | (p))
+
+{
+	mdxz_led@0 {
+		compatible = "mdxz,leddrv";
+		pin = <GROUP_PIN(3, 1)>;
+	};
+
+	mdxz_led@1 {
+		compatible = "mdxz,leddrv";
+		pin = <GROUP_PIN(5, 8)>;
+	};
+
+};

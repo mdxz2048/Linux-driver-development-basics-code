@@ -1,6 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
- 
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Mar 27 10:10:33 2022
+# Make data base, printed on Thu Mar 31 20:33:41 2022
 
 # Variables
 
@@ -47,11 +47,11 @@ CURDIR := /home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code
 # makefile
 SHELL = /bin/sh
 # environment
-SNAP_DATA = /var/snap/code/91
+SNAP_DATA = /var/snap/code/92
 # environment
 VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:69038
+JOURNAL_STREAM = 8:67874
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -73,17 +73,17 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-_ = /snap/code/91/usr/share/code/code
+_ = /snap/code/92/usr/share/code/code
 # environment
-MANAGERPID = 1566
+MANAGERPID = 1557
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f85fc212-1e75-46a1-81c1-18f0d5aee437.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2130aa24-1dd0-46eb-9853-65338405e8f4.sock
 # environment
 VSCODE_CWD = /home/mdxz
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/91/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/92/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -93,42 +93,29 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1782,unix/ubuntu:/tmp/.ICE-unix/1782
+SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1780,unix/ubuntu:/tmp/.ICE-unix/1780
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/mdxz/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-SNAP = /snap/code/91
+SNAP = /snap/code/92
 # environment
 GOPATH = /home/mdxz/Applications/Go
- 
 # environment
- 
-SNAP_VERSION = c722ca6c
- 
+SNAP_VERSION = e18005f0
 # environment
- 
 XDG_MENU_PREFIX = gnome-
- 
 # environment
- 
 VSCODE_LOG_STACK = false
- 
 # environment
- 
 DISABLE_WAYLAND = 1
- 
 # environment
- 
 ELECTRON_RUN_AS_NODE = 1
- 
 # environment
- 
-INVOCATION_ID = 895fb4dc5c5c4cf7aeedc91da9b0effd
- 
+INVOCATION_ID = 87b0b17a4ec2449d86cb080b7e181424
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/91/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/92/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -140,13 +127,12 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2231
+GIO_LAUNCHED_DESKTOP_FILE_PID = 8445
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
 # environment
- 
 GTK_IM_MODULE = fcitx
 # environment
 VSCODE_PIPE_LOGGING = true
@@ -157,7 +143,7 @@ PWD = /home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1739
+SSH_AGENT_PID = 1735
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -169,11 +155,11 @@ HOME = /home/mdxz
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/mdxz/.config/Code/CachedData/c722ca6c7eed3d7987c0d5c3df5c45f6b15e77d1
+VSCODE_CODE_CACHE_PATH = /home/mdxz/.config/Code/CachedData/e18005f0f1b33c29e81d732535d8c0e47cafb0b5
 # environment
 LOGNAME = mdxz
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -199,7 +185,7 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = fcitx
 # environment
-SNAP_USER_DATA = /home/mdxz/snap/code/91
+SNAP_USER_DATA = /home/mdxz/snap/code/92
 # environment
 SHLVL = 0
 # environment
@@ -209,9 +195,8 @@ MAKE_VERSION := 4.2.1
 # environment
 USER = mdxz
 # environment
-SNAP_REVISION = 91
+SNAP_REVISION = 92
 # makefile
- 
 .DEFAULT_GOAL := 
 # environment
 XDG_CURRENT_DESKTOP = Unity
@@ -230,7 +215,7 @@ OLDPWD = /home/mdxz
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-31e28d16-1.65.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-31e28d16-1.66.0-main.sock
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
@@ -244,7 +229,6 @@ MFLAGS = -pqrR
 # environment
 GOROOT_BOOTSTRAP = /home/mdxz/go1.4/go
 # automatic
- 
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 GDK_BACKEND = x11
@@ -257,7 +241,6 @@ CROSS_COMPILE = arm-buildroot-linux-gnueabihf-
 # default
 MAKEFILES := 
 # environment
- 
 SNAP_COOKIE = RN_xRC4gDrJ7IXsKDyQIMXmO42KM7YkkwpxJayobBgYVEjKxWE-2
 # automatic
 <F = $(notdir $<)
@@ -292,11 +275,12 @@ FORCE_UNSAFE_CONFIGURE = 1
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2308
+VSCODE_PID = 8491
 # variable set hash-table stats:
 # Load=132/1024=13%, Rehash=0, Collisions=18/154=12%
 
 # Pattern-specific Variable Values
+ 
 
 # No pattern-specific variable values.
 
@@ -360,6 +344,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Sun Mar 27 10:10:33 2022
+# Finished Make data base on Thu Mar 31 20:33:41 2022
 
  
