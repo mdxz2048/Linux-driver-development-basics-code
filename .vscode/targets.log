@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Mar 31 20:33:41 2022
+# Make data base, printed on Wed Apr  6 20:06:52 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ SNAP_DATA = /var/snap/code/92
 # environment
 VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:67874
+JOURNAL_STREAM = 8:69738
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -75,11 +75,11 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/92/usr/share/code/code
 # environment
-MANAGERPID = 1557
+MANAGERPID = 1599
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2130aa24-1dd0-46eb-9853-65338405e8f4.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ce42b42a-23df-4f1a-9900-e141adbab310.sock
 # environment
 VSCODE_CWD = /home/mdxz
 # environment
@@ -93,7 +93,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1780,unix/ubuntu:/tmp/.ICE-unix/1780
+SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1824,unix/ubuntu:/tmp/.ICE-unix/1824
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 87b0b17a4ec2449d86cb080b7e181424
+INVOCATION_ID = 8f9acf79ff7048cd910760abbc7a2963
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/92/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -127,7 +127,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 8445
+GIO_LAUNCHED_DESKTOP_FILE_PID = 15434
 # automatic
 %F = $(notdir $%)
 # environment
@@ -143,7 +143,7 @@ PWD = /home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1735
+SSH_AGENT_PID = 1776
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -275,14 +275,14 @@ FORCE_UNSAFE_CONFIGURE = 1
 # environment
 LANG = C
 # environment
-VSCODE_PID = 8491
+VSCODE_PID = 15485
 # variable set hash-table stats:
 # Load=132/1024=13%, Rehash=0, Collisions=18/154=12%
 
 # Pattern-specific Variable Values
- 
 
 # No pattern-specific variable values.
+ 
 
 # Directories
 
@@ -344,6 +344,6 @@ GNUmakefile:
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Thu Mar 31 20:33:41 2022
+# Finished Make data base on Wed Apr  6 20:06:52 2022
 
  
