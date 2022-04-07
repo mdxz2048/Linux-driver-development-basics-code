@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Apr  6 20:06:52 2022
+# Make data base, printed on Thu Apr  7 20:44:56 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ SNAP_DATA = /var/snap/code/92
 # environment
 VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:69738
+JOURNAL_STREAM = 8:68989
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -75,11 +75,11 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/92/usr/share/code/code
 # environment
-MANAGERPID = 1599
+MANAGERPID = 1790
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ce42b42a-23df-4f1a-9900-e141adbab310.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3b916872-b9e8-4647-9be7-8427359f8737.sock
 # environment
 VSCODE_CWD = /home/mdxz
 # environment
@@ -93,7 +93,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1824,unix/ubuntu:/tmp/.ICE-unix/1824
+SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/2006,unix/ubuntu:/tmp/.ICE-unix/2006
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 8f9acf79ff7048cd910760abbc7a2963
+INVOCATION_ID = ebaed52c76d34efea9722abc4754eb09
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/92/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -127,7 +127,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 15434
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2490
 # automatic
 %F = $(notdir $%)
 # environment
@@ -143,7 +143,7 @@ PWD = /home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1776
+SSH_AGENT_PID = 1963
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -159,7 +159,7 @@ VSCODE_CODE_CACHE_PATH = /home/mdxz/.config/Code/CachedData/e18005f0f1b33c29e81d
 # environment
 LOGNAME = mdxz
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -275,20 +275,19 @@ FORCE_UNSAFE_CONFIGURE = 1
 # environment
 LANG = C
 # environment
-VSCODE_PID = 15485
+VSCODE_PID = 2742
 # variable set hash-table stats:
 # Load=132/1024=13%, Rehash=0, Collisions=18/154=12%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
- 
 
 # Directories
 
-# . (device 2053, inode 4066135): 7 files, no impossibilities.
+# . (device 2053, inode 4066135): 8 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -338,12 +337,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 15 / storage = 129 B / avg = 8 B
-# current buf: size = 8162 B / used = 129 B / count = 15 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 135 B / avg = 8 B
+# current buf: size = 8162 B / used = 135 B / count = 16 / avg = 8 B
 
-# strcache performance: lookups = 18 / hit rate = 16%
+# strcache performance: lookups = 19 / hit rate = 15%
 # hash-table stats:
-# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Wed Apr  6 20:06:52 2022
+# Load=16/8192=0%, Rehash=0, Collisions=1/19=5%
+# Finished Make data base on Thu Apr  7 20:44:56 2022
 
  
