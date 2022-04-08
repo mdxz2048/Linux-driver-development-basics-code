@@ -58,7 +58,7 @@ EXPORT_SYMBOL(unregister_key_opration);
 /*
  * file operations
  */
-static const struct file_operations led_ops = {
+static const struct file_operations key_ops = {
     .owner = THIS_MODULE,
     .open = key_drv_open,
     .read = key_drv_read,
@@ -67,6 +67,8 @@ static const struct file_operations led_ops = {
 static int key_drv_read(struct file *filp, char __user *buf, size_t count, loff_t *offset)
 {
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+
+    copy_to_user();
     return 0;
 }
 
@@ -85,7 +87,7 @@ static int __init key_drv_init(void)
 {
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
 
-    key_major = register_chrdev(0, DEVNAME, &led_ops); // /dev/DEVNAME
+    key_major = register_chrdev(0, DEVNAME, &key_ops); // /dev/DEVNAME
     if (key_major < 0)
     {
         printk(DEVNAME ": could not get major number\n");
