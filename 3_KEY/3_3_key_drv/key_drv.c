@@ -15,7 +15,9 @@
 #include <linux/kmod.h>
 #include <linux/gfp.h>
 #include "key_operation.h"
+#include <asm/uaccess.h> 
 #include "key_drv.h"
+
 /**************************************DEFINE**************************************/
 #define DEVNAME "mdxz_key"
 
@@ -39,17 +41,16 @@ void register_key_opration(struct key_operations_t *opt)
 {
     int i;
     p_key_opr = opt;
-    for(i = 0; i < opt->count; i++)
+    for (i = 0; i < opt->count; i++)
         device_create(key_class, NULL, MKDEV(key_major, i), NULL, "mdxz_key%d", i); /* /dev/100ask_led0,1,... */
 }
 
 void unregister_key_opration(struct key_operations_t *opt)
 {
-    int i ;
-    for(i = 0; i < opt->count; i++)
+    int i;
+    for (i = 0; i < opt->count; i++)
         device_destroy(key_class, MKDEV(key_major, i)); /* /dev/100ask_led0,1,... */
 }
-
 
 EXPORT_SYMBOL(register_key_opration);
 EXPORT_SYMBOL(unregister_key_opration);
@@ -66,9 +67,16 @@ static const struct file_operations key_ops = {
 
 static int key_drv_read(struct file *filp, char __user *buf, size_t count, loff_t *offset)
 {
+    int ret;
+    int minor = 0;
+    char value = 0;
     printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
 
-    copy_to_user();
+    minor = iminor(file_inode(filp));
+
+    value = p_key_opr->read(minor);
+    ret = copy_to_user(buf, &value, 1);
+
     return 0;
 }
 
