@@ -40,7 +40,7 @@ void register_key_opration(struct key_operations_t *opt)
     int i;
     p_key_opr = opt;
     for(i = 0; i < opt->count; i++)
-        device_create(key_class, NULL, MKDEV(key_major, i), NULL, "mdxz_led%d", i); /* /dev/100ask_led0,1,... */
+        device_create(key_class, NULL, MKDEV(key_major, i), NULL, "mdxz_key%d", i); /* /dev/100ask_led0,1,... */
 }
 
 void unregister_key_opration(struct key_operations_t *opt)
