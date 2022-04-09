@@ -87,7 +87,7 @@ static int imx6ull_gpio_read(int which)
     case 0:
         return (gpio5_key1->psr & (1 << 1)) ? 1 : 0;
     case 1:
-        return (gpio4_key2->psr & (1 << 1)) ? 1 : 0;
+        return (gpio4_key2->psr & (1 << 14)) ? 1 : 0;
     }
     return 0;
 }
