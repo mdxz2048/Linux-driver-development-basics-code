@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Apr  8 19:08:35 2022
+# Make data base, printed on Tue Apr 12 20:20:16 2022
 
 # Variables
 
@@ -49,7 +51,7 @@ SNAP_DATA = /var/snap/code/93
 # environment
 VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:70891
+JOURNAL_STREAM = 8:76882
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -73,11 +75,11 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/93/usr/share/code/code
 # environment
-MANAGERPID = 1579
+MANAGERPID = 1736
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-355cb15d-7b5d-413e-9c84-108ef5bb429a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2bf9efa7-9685-4b50-b158-d906f70b661b.sock
 # environment
 VSCODE_CWD = /home/mdxz
 # environment
@@ -91,7 +93,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1806,unix/ubuntu:/tmp/.ICE-unix/1806
+SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1954,unix/ubuntu:/tmp/.ICE-unix/1954
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -111,7 +113,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 958b42b862484b5093f0ba9b0a1cb15f
+INVOCATION_ID = 9149ecbb46084c568bd48722ed9ac379
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/93/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -125,7 +127,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6912
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2415
 # automatic
 %F = $(notdir $%)
 # environment
@@ -141,7 +143,7 @@ PWD = /home/mdxz/lzp/Embeded/study/Linux-driver-development-basics-code
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1752
+SSH_AGENT_PID = 1911
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -157,7 +159,7 @@ VSCODE_CODE_CACHE_PATH = /home/mdxz/.config/Code/CachedData/8dfae7a5cd50421d10cd
 # environment
 LOGNAME = mdxz
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -273,13 +275,11 @@ FORCE_UNSAFE_CONFIGURE = 1
 # environment
 LANG = C
 # environment
-VSCODE_PID = 6968
+VSCODE_PID = 2488
 # variable set hash-table stats:
 # Load=132/1024=13%, Rehash=0, Collisions=18/154=12%
 
  
-make: *** No rule to make target 'all'.  Stop.
-
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
@@ -344,6 +344,6 @@ GNUmakefile:
 # strcache performance: lookups = 19 / hit rate = 15%
 # hash-table stats:
 # Load=16/8192=0%, Rehash=0, Collisions=1/19=5%
-# Finished Make data base on Fri Apr  8 19:08:35 2022
+# Finished Make data base on Tue Apr 12 20:20:16 2022
 
  
