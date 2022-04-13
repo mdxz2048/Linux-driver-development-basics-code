@@ -16,147 +16,101 @@
 #include <linux/gfp.h>
 #include <linux/platform_device.h>
 #include <asm/io.h>
-
-#include "led_operation.h"
-#include "led_resource.h"
-#include "led_drv.h"
+#include <linux/gpio/consumer.h>
 #include <linux/of.h>
 
-static int g_ledpins[100];
-static int g_ledcnt = 0;
+// static int g_ledpins[100];
+// static int g_ledcnt = 0;
+#define DEVNAME "mdxz_led"
 
-/**
- * @brief Construct a new led opr init object
- *
- * @param which
- */
-static int chip_imx6_led_init(int which)
+static int led_major = 0;
+static struct class *led_class;
+static struct gpio_desc *led_gpio;
+
+static int led_drv_read(struct file *filp, char __user *buf, size_t count, loff_t *offset)
 {
-    printk("%s %s line %d, \n", __FILE__, __FUNCTION__, __LINE__);
-    // operations code
-    printk("init Num of led %d\n", which);
-    switch (GROUP(g_ledpins[which]))
-    {
-    case 0:
-        printk("init pin of group 0 ...\n");
-        break;
-    case 1:
-        printk("init pin of group 1 ...\n");
-        break;
-    case 2:
-        printk("init pin of group 2 ...\n");
-        break;
-    case 3:
-        printk("init pin of group 3 ...\n");
-        break;
-    }
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
     return 0;
 }
 
-/**
- * @brief               控制LED
- *
- * @param which         which-哪个LED
- * @param status        status:1-亮,0-灭
- * @return int
- */
-static int chip_imx6_led_ctl(int which, int status)
+/* write(fd, &val, 1); */
+static int led_drv_write(struct file *filp, const char __user *buf, size_t count, loff_t *ppos)
 {
-    printk("%s %s line %d, %s\n", __FILE__, __FUNCTION__, __LINE__, status ? "on" : "off");
-    // operations code
-    printk("ctrl Num of led %d,The status is %d\n", which, status);
-    switch (GROUP(g_ledpins[which]))
-    {
-    case 0:
-        printk("set pin of group 0 ...\n");
-        break;
-    case 1:
-        printk("set pin of group 1 ...\n");
-        break;
-    case 2:
-        printk("set pin of group 2 ...\n");
-        break;
-    case 3:
-        printk("set pin of group 3 ...\n");
-        break;
-    default:
-        break;
-    }
+    char value = 0;
+    int ret = -1;
+
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+    /* 拷贝用户层数据 */
+    ret = copy_from_user(&value, buf, 1);
+    /* 根据次设备号和status控制LED */
+    gpiod_set_value(led_gpio, value);
+
+    return 1;
+}
+
+static int led_drv_open(struct inode *inode, struct file *filp)
+{
+    printk("%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+    /* 根据次设备号初始化LED */
+    gpiod_direction_output(led_gpio, 0);
 
     return 0;
 }
 
-static int chip_imx6_led_exit(int which)
+static int led_drv_close(struct inode *node, struct file *file)
 {
     printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
+    /*提取次设备号*/
 
     return 0;
 }
 
-static struct led_operations_t mdxz_led_opr =
-    {
-        .init = chip_imx6_led_init,
-        .ctl = chip_imx6_led_ctl,
-        .exit = chip_imx6_led_exit,
+static struct file_operations led_drv = {
+    .owner = THIS_MODULE,
+    .open = led_drv_open,
+    .read = led_drv_read,
+    .write = led_drv_write,
+    .release = led_drv_close,
 };
-struct led_operations_t *get_board_led_opr(void)
-{
-    return &mdxz_led_opr;
-}
 
 static int chip_demo_gpio_probe(struct platform_device *pdev)
 {
-    struct device_node *node;
-    int err = -1;
-    int led_pin;
+    /*1 设备树中定义�? led-gpios=<...>;	*/
+    printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
 
-    node = pdev->dev.of_node;
-    if (!node)
-        return -1;
-
-    err = of_property_read_u32(node, "PIN", &led_pin);
-    g_ledpins[g_ledcnt] = led_pin;
-    led_class_create_device(g_ledcnt);
-    g_ledcnt++;
+    led_gpio = gpiod_get(&pdev->dev, "led", 0);
+    if (IS_ERR(led_gpio))
+    {
+        dev_err(&pdev->dev, "Failed to get GPIO for led\n");
+        return PTR_ERR(led_gpio);
+    }
+    /*2 注册file_operations 	*/
+    led_major = register_chrdev(0, "maxz_led", &led_drv); // /dev/DEVNAME
+    if (led_major < 0)
+    {
+        printk(DEVNAME ": could not get major number\n");
+        return led_major;
+    }
+    /*class_create*/
+    led_class = class_create(THIS_MODULE, "mdxz_led_class");
+    if (IS_ERR(led_class))
+    {
+        class_destroy(led_class);
+        gpiod_put(led_gpio);
+        unregister_chrdev(led_major, DEVNAME);
+        return PTR_ERR(led_class);
+    }
+	device_create(led_class, NULL, MKDEV(led_major, 0), NULL, "mdxz_led%d", 0); /* /dev/100ask_led0 */
 
     return 0;
 }
 
 static int chip_demo_gpio_remove(struct platform_device *pdev)
 {
-    struct device_node *node;
-    int index = 0;
-    int led_pin;
-    int err = -1;
-    int i = 0;
-
-    node = pdev->dev.of_node;
-    if (!node)
-        return -1;
-
-    err = of_property_read_u32(node, "PIN", &led_pin);
-
-    for (i = 0; i < g_ledcnt; i++)
-    {
-        if (g_ledpins[i] == led_pin)
-        {
-            led_class_destroy_device(i);
-            g_ledpins[i] = -1;
-            break;
-        }
-    }
-
-    for (i = 0; i < g_ledcnt; i++)
-
-    {
-        if (g_ledpins[i] != -1)
-        {
-            index = i;
-            break;
-        }
-    }
-    if (index == g_ledcnt)
-        g_ledcnt = 0;
+    device_destroy(led_class, MKDEV(led_major, 0));
+    class_destroy(led_class);
+    unregister_chrdev(led_major, DEVNAME);
+    gpiod_put(led_gpio);
 
     return 0;
 }
@@ -178,9 +132,9 @@ static struct platform_driver chip_demo_gpio_drv = {
 static int __init chip_demo_gpio_drv_init(void)
 {
     int err = -1;
+    printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
 
     err = platform_driver_register(&chip_demo_gpio_drv);
-    register_led_options(&mdxz_led_opr);
     return 0;
 }
 

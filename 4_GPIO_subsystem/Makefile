@@ -26,4 +26,4 @@ clean:
 # obj-m += ab.o
 
 # leddrv.c board_demo.c 编译成 100ask.ko
-obj-m := led_drv.o imx6ull_led_driver.o
+obj-m := imx6ull_led_driver.o
