@@ -2,7 +2,7 @@
  * @Author       : lv zhipeng
  * @Date         : 2022-06-29 16:49:05
  * @LastEditors  : lv zhipeng
- * @LastEditTime : 2022-06-29 17:07:12
+ * @LastEditTime : 2022-06-30 09:18:13
  * @FilePath     : /Linux-driver-development-basics-code/5_KEY_Interrupt/5_1_gpio_interrupt_simple/gpio_key_drv.c
  * @Description  :
  *
@@ -60,11 +60,10 @@ static int __init mdxz_gpio_drv_init(void)
     return 0;
 }
 
-static int __exit mdxz_gpio_drv_exit(void)
+static void __exit mdxz_gpio_drv_exit(void)
 {
     printk("%s %s line %d\n", __FILE__, __FUNCTION__, __LINE__);
     platform_driver_unregister(&gpio_key_drv);
-    return 0;
 }
 
 module_init(mdxz_gpio_drv_init);
